@@ -10,8 +10,56 @@
 		<link rel="stylesheet" href="{% static '/css/styles.css' %}">
 	</head>
 	<body>
-		<div class="container mt-3">
-			<h2>Details Student</h2>       
+		<div class="container mt-4">
+			<div class="card shadow">
+				<div class="card-header bg-primary text-white">
+					<h4 class="mb-0">Student Details</h4>
+				</div>
+
+				<div class="card-body">
+					<div class="row">
+						<!-- Student Photo -->
+						<div class="col-md-4 text-center">
+							{% if student.photo %}
+								<img src="{{ student.photo.url }}"
+									class="img-fluid rounded mb-3"
+									style="max-height:250px;">
+							{% else %}
+								<p class="text-muted">No Photo Available</p>
+							{% endif %}
+						</div>
+
+						<!-- Student Info -->
+						<div class="col-md-8">
+							<table class="table table-bordered">
+								<tr>
+									<th>Name</th>
+									<td>{{ student.name }}</td>
+								</tr>
+								<tr>
+									<th>Email</th>
+									<td>{{ student.email }}</td>
+								</tr>
+								<tr>
+									<th>Mobile</th>
+									<td>{{ student.mobile }}</td>
+								</tr>
+								<tr>
+									<th>Age</th>
+									<td>{{ student.age }}</td>
+								</tr>
+							</table>
+						</div>
+					</div>
+				</div>
+
+				<div class="card-footer text-end">
+					<a href="{% url 'edit_student' student.id %}" class="btn btn-warning btn-sm">Edit</a>
+					<a href="{% url 'list_students' %}" class="btn btn-secondary btn-sm">Back</a>
+					<a href="{% url 'delete_student' student.id %}" class="btn btn-danger btn-sm">Delete</a>
+				</div>
+			</div>
 		</div>
+
 	</body>
 </html>

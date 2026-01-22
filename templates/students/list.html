@@ -27,6 +27,7 @@
 						<th>Mobile No.</th>
 						<th>Email Address</th>
 						<th>Age</th>
+						<th>Actions</th>
 					</tr>
 				</thead>
 				<tbody>					
@@ -37,6 +38,10 @@
 							<td>{{ student_record.mobile }}</td>
 							<td>{{ student_record.email }}</td>
 							<td>{{ student_record.age }}</td>
+							<td>
+								<a class="btn btn-sm btn-primary me-1" href="{% url 'edit_student' student_record.id %}">Edit</a>
+								<a class="btn btn-sm btn-info me-1" href="{% url 'details_student' student_record.id %}">Details</a>
+							</td>
 						</tr>
 					{% endfor %}
 					
